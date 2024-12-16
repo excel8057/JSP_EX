@@ -1,0 +1,26 @@
+{
+	"lib" : {
+		"book" : [
+		{
+			"title" : "JAVA의 정석",
+			"price" : "34,000원",
+			"author" : "홍길동"
+		},
+		{
+			"title" : "JAVA의 찐정석",
+			"price" : "94,000원",
+			"author" : "홍길동아빠"
+		},
+		{
+			"title" : "JAVA의 찐정석",
+			"price" : "94,000원",
+			"author" : "홍길동아빠"
+		},
+		{
+			"title" : "JAVA의 찐정석",
+			"price" : "94,000원",
+			"author" : "홍길동아빠"
+		}
+		]
+	}
+}

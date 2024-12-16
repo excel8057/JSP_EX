@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>05-xml.html</title>
+
+		<!-- 공통 css -->
+		<!--<link rel="stylesheet" type="text/css" href="../css/reset.css"/>-->
+		<link rel="stylesheet" type="text/css" href="../css/common.css"/>
+
+		<!-- jQuery Framework 참조하기 -->
+		<script src="../js/jquery-3.7.1.min.js"></script>
+
+		<script>
+			$(function() {
+				$(function() {
+					$.ajax({
+						url: '/firstExample/ajax/xml/book.xml',
+						method: 'get',
+						dataType: 'xml'
+					}).done(function (data) {
+						// 반복되는 태그 단위를 찾아서 each() 함수 사용
+						$(data).find("book").each(function() {
+							// 각 개별 요소에 속해 있는 텍스트 데이터 추출
+							let title = $(this).find("title").text();
+							let author = $(this).find("author").text();
+							let price = $(this).find("price").text();
+							let date = $(this).find("date").text();
+						
+							// 출력을 위한 동적 요소의 생성
+							let div = $("<ul>");
+							let p1 = $("<li>").html("제목 : " + title);
+							let p2 = $("<li>").html("저자 : " +author);
+							let p3 = $("<li>").html("가격 : " +price);
+							let p4 = $("<li>").html("출판일 : " +date);
+							
+							// 조립과 출력 <div><p></p><p></p><p></p></div>
+							div.append(p1).append(p2).append(p3).append(p4);
+							// 반드시 body 태그 하위에 정적 요소에 추가 작업 설정.
+							$("#result").append(div);
+							$("#result").append("<hr />");
+						});
+						
+	<!--				$.get('/firstExample/ajax/xml/book.xml',function(data) {
+							$(data).find('book').each(function(){
+								let title = $(this).find("title").text();
+								let author = $(this).find("author").text();
+								let price = $(this).find("price").text();
+								
+								let txt = $("<li>").html(title + ", " + author + ", "+ price );
+								$('#view').append(txt);
+							});
+						}).fail(function(xhr, status) {
+						    $("#result").html("오류가 발생했습니다.<br />").append("상태: " + status);
+						})
+					}).fail(function(xhr, textStatus) {
+						 //통신이 실패했을 때 실행되는 함수.
+						$("#result").html(textStatus + " (HTTP-" + xhr.status + ")");
+					}); -->
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<h1 class="title">$.ajax() 함수를 사용한 XML데이터 읽기 (2)</h1>
+		<div class="console" id="result"></div>
+	</body>
+</html>

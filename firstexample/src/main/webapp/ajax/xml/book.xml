@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lib>
+	<book>
+		<title>JAVA의 정석</title>
+		<author>홍길동</author>
+		<price>34,000원</price>
+		<date>12/01/04</date>
+	</book>
+	<book>
+		<title>JAVA의 찐정석</title>
+		<author>길동이아버님</author>
+		<price>94,000원</price>
+		<date>14/07/17</date>
+	</book>
+</lib>

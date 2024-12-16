@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>06_json</title>
+
+		<link rel="stylesheet" type="text/css" href="../css/reset.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/common.css"/>
+
+		<!-- jQuery Framework 참조하기 -->
+		<script src="../js/jquery-3.7.1.min.js"></script>
+
+	    <script>
+	        $(function () {
+	            $.ajax({
+	                url: '/firstExample/ajax/json/book.json', // JSON 파일 경로
+	                method: 'GET',
+	                dataType: 'json'
+	            })
+	            .done(function (json) {
+	                // JSON 데이터 반복 처리
+	                json.lib.book.forEach(function (book) {
+	                    // 데이터 추출
+	                    let title = book.title;
+	                    let price = book.price;
+	                    let author = book.author;
+	
+	                    // 동적 요소 생성
+	                    let ul = $("<ul>");
+	                    let p1 = $("<li>").html("제목 : " + title);
+	                    let p2 = $("<li>").html("시간 : " + price);
+	                    let p3 = $("<li>").html("강사 : " + author);
+	                    let hr = $("<hr>")
+	
+	                    // 조립 및 출력
+	                    let data = ul.append(p1).append(p2).append(p3).append(hr);
+	                    $("#result").append(data);
+	                });
+	            })
+	            .fail(function () {
+	                console.error("JSON 데이터를 가져오는 데 실패했습니다.");
+	                $("#result").html("<p>데이터를 불러오지 못했습니다. 다시 시도하세요.</p>");
+	            });
+	        });
+	    </script>
+	</head>
+	<body>
+		<h1 class="title">$.ajax() 함수를 사용한 JSON 데이터 읽기</h1>
+		<div class="console" id="result"></div>
+	</body>
+</html>
